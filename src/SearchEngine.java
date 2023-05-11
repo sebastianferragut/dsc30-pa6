@@ -1,6 +1,6 @@
 /*
- * Name: TODO
- * PID:  TODO
+ * Name: Sebastian Ferragut, David Tsukamoto
+ * PID:  A17263077, A17379000
  */
 
 import java.io.File;
@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 /**
  * Search Engine implementation.
- * 
- * @author TODO
- * @since  TODO
+ *
+ * @author Sebastian Ferragut, David Tsukamoto
+ * @since  {05-10-2023}
  */
 public class SearchEngine {
 

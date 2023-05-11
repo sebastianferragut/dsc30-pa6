@@ -1,15 +1,15 @@
 /*
- * Name: TODO
- * PID:  TODO
+ * Name: Sebastian Ferragut, David Tsukamoto
+ * PID:  A17263077, A17379000
  */
 
 import java.util.*;
 
 /**
  * Binary search tree implementation.
- * 
- * @author TODO
- * @since  TODO
+ *
+ * @author Sebastian Ferragut, David Tsukamoto
+ * @since  {05-10-2023}
  */
 public class BSTree<T extends Comparable<? super T>> implements Iterable {
 
