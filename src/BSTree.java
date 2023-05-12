@@ -178,9 +178,13 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * 
      * @param key
      * @return true if insertion is successful and false otherwise
+     * @throws NullPointerException if key is null
      */
     public boolean insert(T key) {
         /* TODO */
+        if (key == null) {
+            throw new NullPointerException();
+        }
         return false;
     }
 
@@ -193,6 +197,9 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      */
     public boolean findKey(T key) {
         /* TODO */
+        if (key == null) {
+            throw new NullPointerException();
+        }
         return false;
     }
 
@@ -201,11 +208,18 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      *
      * @param key  Target key
      * @param data To be added to key's LinkedList
-     * @throws NullPointerException     If eaither key or data is null
+     * @throws NullPointerException     If either key or data is null
      * @throws IllegalArgumentException If key is not found in the BST
      */
     public void insertData(T key, T data) {
         /* TODO */
+        if (key == null || data == null) {
+            throw new NullPointerException();
+        }
+        //if (key not found in BST) {
+        // throw new IllegalArgumentException();
+        //}
+
     }
 
     /**
@@ -218,6 +232,12 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      */
     public LinkedList<T> findDataList(T key) {
         /* TODO */
+        if (key == null) {
+            throw new NullPointerException();
+        }
+        //if (key not found in BST) {
+        // throw new IllegalArgumentException();
+        //}
         return null;
     }
 
@@ -243,16 +263,36 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
     }
 
     /* * * * * BST Iterator * * * * */
+    /**
+     * Binary search tree iterator implementation.
+     *
+     * @author Sebastian Ferragut, David Tsukamoto
+     * @since  {05-10-2023}
+     */
     public class BSTree_Iterator implements Iterator<T> {
+        /**
+         * A constructor that initializes the Stack with the leftPath of the root.
+         */
         public BSTree_Iterator() {
             /* TODO */
         }
 
+        /**
+         * Returns false if the Stack is empty i.e. no more nodes left to iterate, true otherwise
+         *
+         * @return boolean false if empty Stack, true otherwise
+         */
         public boolean hasNext() {
             /* TODO */
             return false;
         }
 
+        /**
+         * Returns the next item in the BST.
+         *
+         * @return T next item in BST
+         * @throws NoSuchElementException if there is no next item
+         */
         public T next() {
             /* TODO */
             return null;
@@ -260,7 +300,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
     }
 
     public Iterator<T> iterator() {
-        /* TODO */
+        //return new BSTree_Iterator();
         return null;
     }
 
