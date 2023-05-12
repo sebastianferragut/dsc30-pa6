@@ -36,7 +36,10 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @param key      Node's key
          */
         public BSTNode(BSTNode left, BSTNode right, LinkedList<T> dataList, T key) {
-            /* TODO */
+            this.left = left;
+            this.right = right;
+            this.dataList = dataList;
+            this.key = key;
         }
 
         /**
@@ -49,7 +52,10 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @param key   Node's key
          */
         public BSTNode(BSTNode left, BSTNode right, T key) {
-            /* TODO */
+            this.left = left;
+            this.right = right;
+            this.dataList = new LinkedList<>();
+            this.key = key;
         }
 
         /**
@@ -58,8 +64,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @return The key
          */
         public T getKey() {
-            /* TODO */
-            return null;
+            return this.key;
         }
 
         /**
@@ -68,8 +73,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @return The left child of the node
          */
         public BSTNode getLeft() {
-            /* TODO */
-            return null;
+            return this.left;
         }
 
         /**
@@ -78,8 +82,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @return The right child of the node
          */
         public BSTNode getRight() {
-            /* TODO */
-            return null;
+            return this.right;
         }
 
         /**
@@ -88,8 +91,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @return The linked list of the node
          */
         public LinkedList<T> getDataList() {
-            /* TODO */
-            return null;
+            return this.dataList;
         }
 
         /**
@@ -98,7 +100,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @param newleft New left child
          */
         public void setLeft(BSTNode newleft) {
-            /* TODO */
+            this.left = newleft;
         }
 
         /**
@@ -107,7 +109,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @param newright New right child
          */
         public void setRight(BSTNode newright) {
-            /* TODO */
+            this.right = newright;
         }
 
         /**
@@ -116,7 +118,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @param newData New linked list
          */
         public void setDataList(LinkedList<T> newData) {
-            /* TODO */
+            this.dataList = newData;
         }
 
         /**
@@ -125,7 +127,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @param data New data to be appended
          */
         public void addNewInfo(T data) {
-            /* TODO */
+            this.dataList.add(data);
         }
 
         /**
@@ -136,8 +138,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
          * @return True if data was found, false otherwise
          */
         public boolean removeInfo(T data) {
-            /* TODO */
-            return false;
+            return this.dataList.remove(data);
         }
     }
 
@@ -147,7 +148,8 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * 0-arg constructor that initializes root to null and nelems to 0
      */
     public BSTree() {
-        /* TODO */
+        this.root = null;
+        this.nelems = 0;
     }
 
     /**
@@ -156,8 +158,10 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * @return The root of BSTree, null if the tree is empty
      */
     public BSTNode getRoot() {
-        /* TODO */
-        return null;
+        if (this.nelems == 0) {
+            return null;
+        }
+        return this.root;
     }
 
     /**
@@ -166,8 +170,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * @return The BST size
      */
     public int getSize() {
-        /* TODO */
-        return -1;
+        return this.nelems;
     }
 
     /**
@@ -240,7 +243,6 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
     }
 
     /* * * * * BST Iterator * * * * */
-
     public class BSTree_Iterator implements Iterator<T> {
         public BSTree_Iterator() {
             /* TODO */

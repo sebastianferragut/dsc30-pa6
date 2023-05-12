@@ -9,6 +9,7 @@ public class BSTManual {
 
 /**
  * BST answers for worksheet
+ *
  * @author Sebastian Ferragut, David Tsukamoto
  * @since  {05-10-2023}
  */
