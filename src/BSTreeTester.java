@@ -7,15 +7,24 @@ import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BSTreeTester {
-
-    @BeforeEach
-    public void setUp() {
-    }
-
+/**
+ * BSTree testing suite for constructor and methods,
+ * as well as testing for BSTree_Iterator
+ *
+ * @author Sebastian Ferragut, David Tsukamoto
+ * @since  {05-10-2023}
+ */
+public class BSTreeTester {
+    
     @Test
     public void bSTreeTest() {
-
+        BSTree cTree = new BSTree();
+        assertEquals(0, cTree.getSize());
+        assertEquals(null, cTree.getRoot());
+        assertEquals(-1, cTree.findHeight());
+        assertThrows(NullPointerException.class, () -> {
+            cTree.findKey("key");
+        });
     }
     @Test
     public void getRootTest() {
@@ -140,11 +149,66 @@ class BSTreeTester {
 
     @Test
     public void hasNextTest() {
+        BSTree cTree = new BSTree();
+        cTree.insert(8);
+        cTree.insert(7);
+        cTree.insert(6);
+        Iterator<String> iter = cTree.iterator();
+        assertTrue(iter.hasNext());
+        BSTree bTree = new BSTree();
+        Iterator<String> iterTwo = bTree.iterator();
+        assertFalse(iterTwo.hasNext());
+        BSTree aTree = new BSTree();
+        Iterator<String> iterThree = aTree.iterator();
+        assertFalse(iterThree.hasNext());
+        aTree.insert(1);
+        Iterator<String>iterFour = aTree.iterator();
+        assertTrue(iterFour.hasNext());
     }
 
     @Test
     public void nextTest() {
+        BSTree aTree = new BSTree();
+        Iterator<String>iter = aTree.iterator();
+        assertThrows(NoSuchElementException.class, () -> {
+            iter.next();
+        });
+        BSTree bTree = new BSTree();
+        bTree.insert(3);
+        bTree.insert(2);
+        bTree.insert(1);
+
+        Iterator<String>iterTwo = bTree.iterator();
+        assertEquals(1, iterTwo.next());
+        assertEquals(2, iterTwo.next());
+        assertEquals(3, iterTwo.next());
+        assertThrows(NoSuchElementException.class, () -> {
+            iterTwo.next();
+        });
     }
 
+    @Test
+    public void toStringTest() {
+        BSTree cTree = new BSTree();
+        cTree.insert(8);
+        cTree.insert(7);
+        cTree.insert(6);
+        Iterator<String> iter = cTree.iterator();
+        assertEquals("[6, 7, 8]", iter.toString());
+        BSTree bTree = new BSTree();
+        bTree.insert(2);
+        bTree.insert(4);
+        bTree.insert(1);
+        Iterator<String> iterTwo = bTree.iterator();
+        assertEquals("[1, 2]", iterTwo.toString());
+        BSTree aTree = new BSTree();
+        aTree.insert(5);
+        aTree.insert(3);
+        Iterator<String> iterThree = aTree.iterator();
+        assertEquals("[3, 5]", iterThree.toString());
+        BSTree dTree = new BSTree();
+        Iterator<String> iterFour = dTree.iterator();
+        assertEquals("[]", iterFour.toString());
+    }
 
 }
