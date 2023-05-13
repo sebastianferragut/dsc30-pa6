@@ -190,10 +190,10 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
             return true;
         }
         boolean isInserted = insertHelper(this.root, key);
-        if (isInserted == false) {
+        if (!isInserted) {
             return isInserted;
         }
-        this.nelems +=1;
+        this.nelems += 1;
         return true;
     }
 
@@ -206,7 +206,9 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      */
     private boolean insertHelper(BSTNode currRoot, T toAdd) {
         int value = toAdd.compareTo(currRoot.getKey());
-        if (value == 0) return false;
+        if (value == 0) {
+            return false;
+        }
         if (value < 0) {
             if (currRoot.getLeft() == null) {
                 currRoot.setLeft(new BSTNode(null, null, toAdd));
@@ -234,10 +236,10 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
         if (key == null) {
             throw new NullPointerException();
         }
-        if (this.root.getKey() == null){
+        if (this.root.getKey() == null) {
             return false;
         }
-        if (this.root.getKey() == key){
+        if (this.root.getKey() == key) {
             return true;
         }
         return findKeyHelper(this.root, key);
@@ -251,14 +253,18 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * @return boolean true if the key is found, false otherwise
      */
     private boolean findKeyHelper(BSTNode currRoot, T toFind) {
-        if (currRoot == null) return false;
-        if (currRoot.getKey() == null) return false;
-        if (toFind.compareTo(currRoot.getKey()) == 0){
+        if (currRoot == null) {
+            return false;
+        }
+        if (currRoot.getKey() == null) {
+            return false;
+        }
+        if (toFind.compareTo(currRoot.getKey()) == 0) {
             return true;
         }
         if (toFind.compareTo(currRoot.getKey()) < 0) {
             return findKeyHelper(currRoot.getLeft(), toFind);
-        } else if (toFind.compareTo(currRoot.getKey()) > 0){
+        } else if (toFind.compareTo(currRoot.getKey()) > 0) {
             return findKeyHelper(currRoot.getRight(), toFind);
         } else {
             return true;
@@ -278,8 +284,8 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
         if (key == null || data == null) {
             throw new NullPointerException();
         }
-        if (findKey(key) == false) {
-         throw new IllegalArgumentException();
+        if (!findKey(key)) {
+            throw new IllegalArgumentException();
         } else {
             insertDataHelper(this.root, key).addNewInfo(data);
         }
@@ -295,12 +301,12 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      */
     private BSTNode insertDataHelper(BSTNode currRoot, T toFind) {
         //returning currNode
-        if (toFind.compareTo(currRoot.getKey()) == 0){
+        if (toFind.compareTo(currRoot.getKey()) == 0) {
             return currRoot;
         }
         if (toFind.compareTo(currRoot.getKey()) < 0) {
             return insertDataHelper(currRoot.getLeft(), toFind);
-        } else if (toFind.compareTo(currRoot.getKey()) > 0){
+        } else if (toFind.compareTo(currRoot.getKey()) > 0) {
             return insertDataHelper(currRoot.getRight(), toFind);
         }
         return currRoot;
@@ -319,8 +325,8 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
         if (key == null) {
             throw new NullPointerException();
         }
-        if (findKey(key) == false) {
-         throw new IllegalArgumentException();
+        if (!findKey(key)) {
+            throw new IllegalArgumentException();
         }
         return findDataListHelper(this.root, key);
     }
@@ -334,12 +340,12 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * @return boolean true if the key is found, false otherwise
      */
     private LinkedList findDataListHelper(BSTNode currRoot, T toFind) {
-        if (toFind.compareTo(currRoot.getKey()) == 0){
+        if (toFind.compareTo(currRoot.getKey()) == 0) {
             return currRoot.getDataList();
         }
         if (toFind.compareTo(currRoot.getKey()) < 0) {
             return findDataListHelper(currRoot.getLeft(), toFind);
-        } else if (toFind.compareTo(currRoot.getKey()) > 0){
+        } else if (toFind.compareTo(currRoot.getKey()) > 0) {
             return findDataListHelper(currRoot.getRight(), toFind);
         }
         return currRoot.getDataList();
@@ -432,7 +438,7 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
             if (getRoot() == null) {
                 return "[]";
             }
-            Stack<BSTNode> copyStack = (Stack<BSTNode>)iterStack.clone();
+            Stack<BSTNode> copyStack = (Stack<BSTNode>) iterStack.clone();
             while (!copyStack.isEmpty()) {
                 BSTNode curr = copyStack.pop();
                 sb.append(curr.key.toString());
