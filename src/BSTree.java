@@ -216,10 +216,11 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
         if (key == null || data == null) {
             throw new NullPointerException();
         }
-        //if (key not found in BST) {
-        // throw new IllegalArgumentException();
-        //}
-
+        if (findKey(key) == false) {
+         throw new IllegalArgumentException();
+        } else {
+            insertDataHelper(this.root, key).addNewInfo(data);
+        }
     }
 
     /**
@@ -231,7 +232,6 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * @throws IllegalArgumentException If key is not found in the BST
      */
     public LinkedList<T> findDataList(T key) {
-        /* TODO */
         if (key == null) {
             throw new NullPointerException();
         }
@@ -269,7 +269,8 @@ public class BSTree<T extends Comparable<? super T>> implements Iterable {
      * @author Sebastian Ferragut, David Tsukamoto
      * @since  {05-10-2023}
      */
-    public class BSTree_Iterator implements Iterator<T> {
+    public class BSTree_Iterator<T> implements Iterator<T> {
+        private Stack<BSTNode> iterStack;
         /**
          * A constructor that initializes the Stack with the leftPath of the root.
          */
