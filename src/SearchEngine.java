@@ -69,8 +69,8 @@ public class SearchEngine {
             String lowerKey = key[i].toLowerCase();
             tree.insert(lowerKey);
             if (tree.findKey(lowerKey)) {
-                if (!tree.findDataList(lowerKey).contains(data.toLowerCase())) {
-                    tree.insertData(lowerKey, data.toLowerCase());
+                if (!tree.findDataList(lowerKey).contains(data)) {
+                    tree.insertData(lowerKey, data);
                 }
             }
         }
@@ -84,11 +84,8 @@ public class SearchEngine {
      * @param query      - query string
      */
     public static void searchMyQuery(BSTree<String> searchTree, String query) {
-
-        /* TODO */
         // process query
         String[] keys = query.toLowerCase().split(" ");
-
         //"Documents related to harrison-ford mark-hamill are:
         // [empire-strikes-back, new-hope]
         // Documents related to harrison-ford are: [indiana-jones]"
@@ -107,7 +104,6 @@ public class SearchEngine {
                         (searchTree.findDataList(keys[i]).clone());
                 indivDoc.removeAll(sharedDocs);
                 if (indivDoc.size() > 0) {
-                    //TODO nested if to check if linkedtoPrint contains anything from shared
                     print(keys[i], indivDoc);
                 }
             }
@@ -155,7 +151,11 @@ public class SearchEngine {
         // choose the right tree to query
         String query = "";
         for (int i = 2; i < args.length; i++) {
-            query += args[i];
+            if (i < args.length - 1) {
+                query += args[i] + " ";
+            } else {
+                query += args[i];
+            }
         }
         if (searchKind == 0) {
             //movies
