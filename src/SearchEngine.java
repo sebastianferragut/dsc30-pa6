@@ -111,7 +111,12 @@ public class SearchEngine {
         // search and output individual results
         // hint: list's addAll() and removeAll() methods could be helpful
         if (keys.length == 1) {
-            print(keys[0], searchTree.findDataList(keys[0]));
+            try {
+                print(keys[0], searchTree.findDataList(keys[0]));
+            } catch (IllegalArgumentException e) {
+                System.out.println("The search yielded no results for " + query);
+            }
+
         }
     }
 
